@@ -74,7 +74,7 @@ install:
   - pip install --no-deps .
   - conda info -a
     
-script: ./ci/travis/run.sh
+script: $SUDO ./ci/travis/run.sh
 
 notifications:
     flowdock: ef3821a08a791106512ccfc04c92eccb
