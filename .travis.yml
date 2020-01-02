@@ -50,7 +50,7 @@ install:
       $SUDO cp -r $HOME/miniconda/bin/* /usr/bin/;
     else
       wget http://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-      bash miniconda.sh -b -p /opt/conda
+      bash miniconda.sh -b -p /opt/conda;
     fi
   - ps -ef | grep $$
   - source /opt/conda/bin/activate
