@@ -67,7 +67,7 @@ install:
     fi
   - pip install pkginfo
   - if [[ "$FLAKE8" == "true" ]]; then
-      conda install -q flake8;
+      $SUDO conda install -q flake8;
     else
       pip install -r requirements-docs.txt;
     fi
