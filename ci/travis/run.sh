@@ -27,7 +27,7 @@ else
       mkdir -p ~/.conda
       conda create -n blarg1 -yq python=2.7
       conda create -n blarg3 -yq python=3.6
-      if [`uname -m` = 'aarch64']; then 
+      if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
         conda create -n blarg4 -yq python numpy pandas
       else
         conda create -n blarg4 -yq python nomkl numpy pandas svn
