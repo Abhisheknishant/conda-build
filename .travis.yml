@@ -73,11 +73,6 @@ install:
     fi
   - pip install --no-deps .
   - conda info -a
-
-before_script:
-  - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
-      sudo rm /usr/bin/lsb_release;
-    fi
     
 script: ./ci/travis/run.sh
 
