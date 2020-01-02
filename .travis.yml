@@ -62,6 +62,9 @@ install:
   # avoids a python 3.7 problem
   - $SUDO conda install -q cytoolz
   - $SUDO conda install -q anaconda-client requests filelock contextlib2 jinja2 patchelf ripgrep pyflakes beautifulsoup4 chardet pycrypto glob2 psutil pytz tqdm conda-package-handling py-lief python-libarchive-c
+  - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
+      sudo rm /usr/bin/lsb_release;
+    fi
   - pip install pkginfo
   - if [[ "$FLAKE8" == "true" ]]; then
       conda install -q flake8;
@@ -73,10 +76,6 @@ install:
 
 before_script:
   - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
-      sudo chmod -R 777 /opt/conda/envs/pylibtiff-dev/lib/python3.7/site-packages;
-      sudo rm /usr/bin/lsb_release;
-    else
-      sudo chmod -R 777 /opt/conda/envs/pylibtiff-dev/lib/python3.7/site-packages;
       sudo rm /usr/bin/lsb_release;
     fi
     
