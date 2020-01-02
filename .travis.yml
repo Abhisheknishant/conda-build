@@ -35,7 +35,7 @@ addons:
 
 before_install:
   - sudo apt-get install -y git wget libtiff-dev
-
+  
 env:
   global:
     - SUDO=""
@@ -54,14 +54,14 @@ install:
     fi
   - ps -ef | grep $$
   - source /opt/conda/bin/activate
-  - chmod -R 777 /opt/conda/*
-  - conda update -y conda;
-  - conda config --set always_yes yes
-  - conda config --set auto_update_conda False
-  - conda info
+  - $SUDO chmod -R 777 /opt/conda/*
+  - $SUDO conda update -y conda;
+  - $SUDO conda config --set always_yes yes
+  - $SUDO conda config --set auto_update_conda False
+  - $SUDO conda info
   # avoids a python 3.7 problem
-  - conda install -q cytoolz
-  - conda install -q anaconda-client requests filelock contextlib2 jinja2 patchelf ripgrep pyflakes beautifulsoup4 chardet pycrypto glob2 psutil pytz tqdm conda-package-handling py-lief python-libarchive-c
+  - $SUDO conda install -q cytoolz
+  - $SUDO conda install -q anaconda-client requests filelock contextlib2 jinja2 patchelf ripgrep pyflakes beautifulsoup4 chardet pycrypto glob2 psutil pytz tqdm conda-package-handling py-lief python-libarchive-c
   - pip install pkginfo
   - if [[ "$FLAKE8" == "true" ]]; then
       conda install -q flake8;
