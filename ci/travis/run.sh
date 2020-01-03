@@ -10,9 +10,9 @@ if [[ "$FLAKE8" == "true" ]]; then
     conda build conda.recipe --no-anaconda-upload
     conda create -n _cbtest conda-build glob2
     # because this is a file, conda is not going to process any of its dependencies.
-    sudo conda install -n _cbtest $(conda render --output conda.recipe | head -n 1)
+    conda install -n _cbtest $(conda render --output conda.recipe | head -n 1)
     source activate _cbtest
-    sudo conda build conda.recipe --no-anaconda-upload
+    conda build conda.recipe --no-anaconda-upload
 elif [[ "$DOCS" == "true" ]]; then
     cd docs
     make html
