@@ -39,7 +39,7 @@ else
 
       if [[ "$SANITY" == "true" ]]; then
           pip install git+https://github.com/conda/conda-verify.git
-          sudo cp usr/bin/* /opt/conda/bin/
+          sudo cp $HOME/miniconda/bin/py.test /opt/conda/bin/
           /opt/conda/bin/py.test -v -n auto --basetemp /tmp/cb --cov conda_build --cov-append --cov-report xml -m "sanity and not slow and not serial" tests
           /opt/conda/bin/py.test -v -n 0 --basetemp /tmp/cb_serial --cov conda_build --cov-append --cov-report xml -m "sanity and not slow and serial" tests
       else
