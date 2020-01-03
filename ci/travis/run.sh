@@ -37,7 +37,7 @@ else
           SLOW_MARK="and slow"
       fi
 
-      sudo cp usr/bin/py.test /opt/conda/bin/
+      sudo cp -r $HOME/miniconda/bin/py.test /opt/conda/bin/
       if [[ "$SANITY" == "true" ]]; then
           pip install git+https://github.com/conda/conda-verify.git
           /opt/conda/bin/py.test -v -n auto --basetemp /tmp/cb --cov conda_build --cov-append --cov-report xml -m "sanity and not slow and not serial" tests
