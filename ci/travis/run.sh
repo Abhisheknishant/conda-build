@@ -31,7 +31,7 @@ else
         conda create -n blarg4 -yq python numpy pandas
       else
         conda create -n blarg4 -yq python nomkl numpy pandas svn
-      #fi
+      fi
       SLOW_MARK="and not slow"
       if [[ $"SLOW_TESTS" == "true" ]]; then
           SLOW_MARK="and slow"
