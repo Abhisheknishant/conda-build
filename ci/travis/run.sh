@@ -2,24 +2,24 @@
 # flake8 and bdist_conda test together
 set -ev
 UNAME_ARCH=$(uname -m)
-if [[ "$UNAME_ARCH" == "aarch64" ]]; then
-    IS_SUDO = "sudo";
-else
-    IS_SUDO = "";
-fi
+#if [[ "$UNAME_ARCH" == "aarch64" ]]; then
+#    IS_SUDO = "sudo";
+#else
+#    IS_SUDO = "";
+#fi
 if [[ "$FLAKE8" == true ]]; then
-    $IS_SUDO flake8 .;
+    $SUDO flake8 .;
     dirname="$(find /opt/conda/lib -iname python* -type d -maxdepth 1)";
     cp bdist_conda.py $dirname/distutils/command;
     pushd tests/bdist-recipe && python setup.py bdist_conda && popd;
-    $IS_SUDO conda build --help;
-    $IS_SUDO conda build --version;
-    $IS_SUDO conda build conda.recipe --no-anaconda-upload;
-    $IS_SUDO conda create -n _cbtest conda-build glob2;
+    $SUDO conda build --help;
+    $SUDO conda build --version;
+    $SUDO conda build conda.recipe --no-anaconda-upload;
+    $SUDO conda create -n _cbtest conda-build glob2;
     # because this is a file, conda is not going to process any of its dependencies.
-    $IS_SUDO conda install -n _cbtest $(conda render --output conda.recipe | head -n 1);
+    $SUDO conda install -n _cbtest $(conda render --output conda.recipe | head -n 1);
     source activate _cbtest;
-    $IS_SUDO conda build conda.recipe --no-anaconda-upload;
+    $SUDO conda build conda.recipe --no-anaconda-upload;
 elif [[ "$DOCS" == true ]]; then
     sudo apt-get install libpython3.7-dev;
     cd docs;
