@@ -8,7 +8,7 @@ UNAME_ARCH=$(uname -m)
 #    IS_SUDO = "";
 #fi
 if [[ "$FLAKE8" == true ]]; then
-    $SUDO flake8 .;
+    python -m flake8 .;
     dirname="$(find /opt/conda/lib -iname python* -type d -maxdepth 1)";
     cp bdist_conda.py $dirname/distutils/command;
     pushd tests/bdist-recipe && python setup.py bdist_conda && popd;
@@ -21,7 +21,6 @@ if [[ "$FLAKE8" == true ]]; then
     source activate _cbtest;
     $SUDO conda build conda.recipe --no-anaconda-upload;
 elif [[ "$DOCS" == true ]]; then
-    sudo apt-get install libpython3.7-dev;
     cd docs;
     make html;
 else
