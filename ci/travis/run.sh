@@ -2,9 +2,10 @@
 # flake8 and bdist_conda test together
 set -ev
 UNAME_ARCH=$(uname -m)
-SUDO = ""
 if [[ "$UNAME_ARCH" == "aarch64" ]]; then
-    SUDO = sudo;
+    SUDO = "sudo";
+else
+    SUDO = ""
 fi
 if [[ "$FLAKE8" == true ]]; then
     $SUDO flake8 .;
