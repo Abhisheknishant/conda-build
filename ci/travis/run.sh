@@ -3,7 +3,7 @@
 set -ev
 UNAME_ARCH=$(uname -m)
 if [[ "$UNAME_ARCH" == "aarch64" ]]; then
-    sudo apt-get install python-dev python3-dev;
+    sudo apt-get install python-dev python3.7-dev;
 fi
 if [[ "$FLAKE8" == true ]]; then
     conda install -q flake8;
