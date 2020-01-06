@@ -3,7 +3,7 @@
 set -ev
 UNAME_ARCH=$(uname -m)
 if [[ "$UNAME_ARCH" == "aarch64" ]]; then
-    sudo apt-get install python3.7-dev;
+    export LD_LIBRARY_PATH=/opt/python/3.7.5/lib/:$LD_LIBRARY_PATH;
     python -V;
 fi
 if [[ "$FLAKE8" == true ]]; then
