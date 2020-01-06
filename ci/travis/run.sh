@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # flake8 and bdist_conda test together
 set -ev
 UNAME_ARCH=$(uname -m)
