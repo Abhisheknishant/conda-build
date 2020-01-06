@@ -3,7 +3,7 @@
 set -ev
 UNAME_ARCH=$(uname -m)
 if [[ "$UNAME_ARCH" == "aarch64" ]]; then
-    export LD_LIBRARY_PATH=/opt/python/3.7.5/lib/:$LD_LIBRARY_PATH;
+    export LD_LIBRARY_PATH=/opt/conda/lib/:$LD_LIBRARY_PATH;
     export PATH=/opt/conda/bin:$PATH;
 fi
 if [[ "$FLAKE8" == true ]]; then
