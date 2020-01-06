@@ -1,5 +1,6 @@
 # flake8 and bdist_conda test together
 set -ev
+UNAME_ARCH=$(uname -m)
 if [[ "$FLAKE8" == "true" ]]; then
     flake8 .
     dirname="$(find /opt/conda/lib -iname python* -type d -maxdepth 1)"
@@ -27,13 +28,14 @@ else
       mkdir -p ~/.conda
       sudo conda create -n blarg1 -yq python=2.7
       sudo conda create -n blarg3 -yq python=3.6
-      if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
+      if [[ "$UNAME_ARCH" == "aarch64" ]]; then
         conda create -n blarg4 -yq python numpy 
       else
         conda create -n blarg4 -yq python nomkl numpy pandas svn
       fi
+      
       SLOW_MARK="and not slow"
-      if [[ $"SLOW_TESTS" == "true" ]]; then
+      if [[ "$SLOW_TESTS" == "true" ]]; then
           SLOW_MARK="and slow"
       fi
 
