@@ -3,10 +3,11 @@
 set -ev
 UNAME_ARCH=$(uname -m)
 if [[ "$UNAME_ARCH" == "aarch64" ]]; then
-    sudo apt-get install python-dev python3-dev libpython3.7-dev;
+    sudo apt-get install python-dev python3-dev;
 fi
 if [[ "$FLAKE8" == true ]]; then
-    python3 -m flake8 .;
+    which flake8;
+    flake8 .;
     dirname="$(find /opt/conda/lib -iname python* -type d -maxdepth 1)";
     cp bdist_conda.py $dirname/distutils/command;
     pushd tests/bdist-recipe && python setup.py bdist_conda && popd;
