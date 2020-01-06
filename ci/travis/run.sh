@@ -1,6 +1,10 @@
 # flake8 and bdist_conda test together
 set -ev
 UNAME_ARCH=$(uname -m)
+echo "Flake8"
+echo $FLAKE8
+echo "Docs"
+echo "$DOCS"
 if [[ "$FLAKE8" == true ]]; then
     flake8 .
     dirname="$(find /opt/conda/lib -iname python* -type d -maxdepth 1)"
