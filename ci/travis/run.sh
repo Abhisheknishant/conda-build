@@ -6,7 +6,7 @@ if [[ "$UNAME_ARCH" == "aarch64" ]]; then
     sudo apt-get install python-dev python3-dev;
 fi
 if [[ "$FLAKE8" == true ]]; then
-    which flake8;
+    conda install -q flake8;
     flake8 .;
     dirname="$(find /opt/conda/lib -iname python* -type d -maxdepth 1)";
     cp bdist_conda.py $dirname/distutils/command;
