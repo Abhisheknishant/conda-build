@@ -32,10 +32,7 @@ addons:
     packages:
     - attr
     - mercurial
-
-before_install:
-  - sudo apt-get install -y git wget libtiff-dev
-  
+    
 env:
   global:
     - SUDO=""
